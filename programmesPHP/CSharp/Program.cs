@@ -10,18 +10,23 @@ namespace CSharp
             int age = 16;
             Boolean sexe = true;
 
-            Console.WriteLine("Bonjour " + nom);
+            String message = "Bonjour " + nom + "\n";
             if(sexe) {
-                Console.WriteLine("Vous êtes un homme");
+                message = message + "Vous êtes un homme";
+                if(age >= 18) {
+                    message = message + " majeur";
+                } else {
+                    message = message + " mineur";
+                }
             } else {
-                Console.WriteLine("Vous êtes une femme");
+                message = message + "Vous êtes une femme";
+                if(age >= 18) {
+                    message = message + " majeure";
+                } else {
+                    message = message + " mineure";
+                }
             }
-            if(age >= 18) {
-                Console.WriteLine("Vous êtes majeur(e)");
-            } else {
-                Console.WriteLine("Vous êtes mineur(e)");
-            }
-
+            Console.WriteLine(message);
         }
     }
 }
