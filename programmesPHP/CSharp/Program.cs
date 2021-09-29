@@ -7,11 +7,17 @@ namespace CSharp
         static void Main(string[] args)
         {
             Random rand = new Random();
-            int alea = rand.Next(10);
+            int alea = rand.Next(21);
 
-            for(int i=1; i <= 10; i++) {
-                Console.WriteLine(alea + " * " + i + " = " + (alea * i));
-            };
+            Console.WriteLine("Nombre : " + alea);
+            Console.WriteLine("Le nombre est divisible par : ");
+
+            for(var i = 1; i <= alea; i++) {
+                if(alea % i == 0 ) {
+                    Console.WriteLine(i);
+                }
+            }
+
         }
     }
 }
