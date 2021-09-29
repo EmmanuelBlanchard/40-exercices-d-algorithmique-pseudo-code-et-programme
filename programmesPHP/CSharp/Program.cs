@@ -7,11 +7,14 @@ namespace CSharp
         static void Main(string[] args)
         {
             Random rand = new Random();
-            int alea = rand.Next(2);
-            if(alea == 0) {
-                Console.WriteLine(alea + " : Pile");
+            int alea = rand.Next(21);
+            Console.WriteLine("Nombre : " + alea);
+            if(alea < 7) {
+                Console.WriteLine("Bonjour");
+            } else if(alea < 14) {
+                Console.WriteLine("Salut");
             } else {
-                Console.WriteLine(alea + " : Face");
+                Console.WriteLine("Hello");
             }
         }
     }
