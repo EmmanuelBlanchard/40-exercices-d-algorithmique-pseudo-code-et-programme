@@ -6,9 +6,10 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            int nombre1 = 15;
-            int nombre2 = 20;
-            Console.WriteLine("L'addition de " + nombre1 + " + " + nombre2 + " = " +(nombre1+ nombre2));
+            const int TVA = 20;
+            var prixHT = 10;
+            Console.WriteLine("Voici le prix : ");
+            Console.WriteLine(prixHT + "EUR HT - " + (prixHT * TVA / 100 + prixHT) + "EUR TTC");
         }
     }
 }
