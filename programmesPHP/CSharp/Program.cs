@@ -6,9 +6,9 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            String prenom = "Emmanuel";
-            String nom = "BLANCHARD";
-            Console.WriteLine("Mon nom est " + nom + " et mon prénom est "+prenom);
+            int nombre1 = 15;
+            int nombre2 = 20;
+            Console.WriteLine("L'addition de " + nombre1 + " + " + nombre2 + " = " +(nombre1+ nombre2));
         }
     }
 }
