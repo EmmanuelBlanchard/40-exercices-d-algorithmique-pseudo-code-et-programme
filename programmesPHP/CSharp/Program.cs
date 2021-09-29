@@ -6,18 +6,17 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            Random rand = new Random();
-            int alea = rand.Next(21);
-
-            Console.WriteLine("Nombre : " + alea);
-            Console.WriteLine("Le nombre est divisible par : ");
-
-            for(var i = 1; i <= alea; i++) {
-                if(alea % i == 0 ) {
-                    Console.WriteLine(i);
-                }
+            Console.WriteLine("Quel nombre voulez-vous ? ");
+            int choix = int.Parse(Console.ReadLine());
+            Console.WriteLine("Les 5 nombres précèdents sont : ");
+            for(var i = choix - 1 ; i >= choix -1 -4 ; i = i - 1) {
+                Console.WriteLine(i);
             }
 
+            Console.WriteLine("Les 5 nombres suivants sont : ");
+            for(var i = choix + 1 ; i <= choix +1 +4 ; i = i + 1) {
+                Console.WriteLine(i);
+            }
         }
     }
 }
