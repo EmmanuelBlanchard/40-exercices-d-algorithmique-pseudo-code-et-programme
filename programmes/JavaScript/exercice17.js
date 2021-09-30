@@ -25,6 +25,7 @@ switch(nombreAleatoire) {
     case 10: nombreRomain = "X";
     break;
     default: console.log("Nombre non pris en compte");
+    break;
 }
 
 if(nombreRomain != "") {
