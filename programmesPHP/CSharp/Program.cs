@@ -6,34 +6,21 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            Random rand = new Random();
+            int note1 = saisieNote();
+            int note2 = saisieNote();
+            int note3 = saisieNote();
 
-            int nombreAleatoire = rand.Next(100);
-            
-            int nombreSaisi = 0;
-            
+            Console.WriteLine("La moyenne est de : " + (note1+note2+note3) / 3);
 
-            Console.WriteLine("Devinez le nombre choisi par l'ordinateur entre 1 et 100 !");
-
-            int compteur = 1;
-
-            do {
-                Console.WriteLine("***************************");
-                Console.WriteLine("Numéro de l'essai : " + compteur);
-                compteur = compteur + 1;
-                
-                Console.WriteLine("Saisir un nombre : ");
-                nombreSaisi = int.Parse(Console.ReadLine());
-
-                if(nombreSaisi < nombreAleatoire) {
-                    Console.WriteLine("Trop petit");
+            int saisieNote() {
+                Console.WriteLine("Saisir un note entre 0 et 20 : ");
+                int nombreSaisi = int.Parse(Console.ReadLine());
+                while (nombreSaisi < 0 || nombreSaisi > 20) {
+                    Console.WriteLine("Mauvaise saisie, recommencez : ");
+                    nombreSaisi = int.Parse(Console.ReadLine());
                 }
-                if(nombreSaisi > nombreAleatoire) {
-                    Console.WriteLine("Trop grand");
-                }
-            } while (nombreSaisi != nombreAleatoire);
-
-            Console.WriteLine("Félicitations ! Le nombre était : " + nombreSaisi);
+                return nombreSaisi;
+            }
         }
     }
 }
