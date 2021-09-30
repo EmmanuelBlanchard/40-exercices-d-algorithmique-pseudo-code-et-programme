@@ -6,41 +6,27 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            Random rand = new Random();
-            int nombreAleatoire = rand.Next(10)+1;
+            String langueSaisie ="";
 
-            Console.WriteLine("Nombre Arabe : " + nombreAleatoire);
+            do {
+                //saisie clavier et affichage d'un message au préalable :
+                Console.WriteLine("Choisir la langue : AL / EN / ES / PO / IT : ");
+                langueSaisie = Console.ReadLine();
+            } while (langueSaisie != "AL" && langueSaisie != "EN" && langueSaisie != "ES" && langueSaisie != "PO" && langueSaisie != "IT");
 
-            String nombreRomain = "";
-
-            switch(nombreAleatoire) {
-                case 1: nombreRomain = "I";
+            switch(langueSaisie) {
+                case "AL" : Console.WriteLine("Hallo");
                 break;
-                case 2: nombreRomain = "II";
+                case "EN" : Console.WriteLine("Hello");
                 break;
-                case 3: nombreRomain = "III";
+                case "ES" : Console.WriteLine("Buenos dias");
                 break;
-                case 4: nombreRomain = "IV";
+                case "PO" : Console.WriteLine("Ola");
                 break;
-                case 5: nombreRomain = "V";
+                case "IT" : Console.WriteLine("Buongiorno");
                 break;
-                case 6: nombreRomain = "VI";
+                default : Console.WriteLine("Langue non prise en compte");
                 break;
-                case 7: nombreRomain = "VII";
-                break;
-                case 8: nombreRomain = "VIII";
-                break;
-                case 9: nombreRomain = "IX";
-                break;
-                case 10: nombreRomain = "X";
-                break;
-                default: Console.WriteLine("Nombre non pris en compte");
-            }
-
-            if(nombreRomain != "") {
-                Console.WriteLine("Equivalent nombre romain : " + nombreRomain);
-            } else {
-                Console.WriteLine("Le nombre aléatoire généré n'est pas compris en 1 et 10")
             }
         }
     }
