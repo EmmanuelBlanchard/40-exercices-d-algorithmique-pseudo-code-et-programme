@@ -6,46 +6,46 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            const double DOLLAR = 1.22;
-            const double ROUBLE = 91.14;
-            const double YUAN = 7.89;
-            const double LIVRE = 0.89;
+            Random rand = new Random();
+            int nombreAleatoire1 = rand.Next(100);
+            int nombreAleatoire2 = rand.Next(100);
+            int operation = 1+rand.Next(4);
+            Console.WriteLine(operation);
 
-            Console.WriteLine("Saisir la somme en euro a convertir : ");
-            double montantSaisi = double.Parse(Console.ReadLine()); 
-            afficherMenuDevise();
+            int reponse;
+            int bonneReponse = 0;
+            Console.WriteLine("Quel est le résultat du calcul suivant : ");
 
-            double valeurConvertie = 0;
-            String devise;
-            do {
-                //saisie clavier et affichage d'un message au préalable :
-                Console.WriteLine("Saisir la devise souhaitée : ");
-                devise = Console.ReadLine();
-                switch(devise) {
-                    case "$" : 
-                    case "Dollars" : valeurConvertie = DOLLAR * montantSaisi;
-                    break;
-                    case "Roubles" : valeurConvertie = ROUBLE * montantSaisi;
-                    break;
-                    case "Yuans" : valeurConvertie = YUAN * montantSaisi;
-                    break;
-                    case "Livres" : valeurConvertie = LIVRE * montantSaisi;
-                    break;
-                    default: Console.WriteLine("La devise choisie n'est pas prise en compte");
-                    break;
-                }
-            } while (valeurConvertie == 0);
-
-            Console.WriteLine(montantSaisi + "EUR - " + valeurConvertie + " " + devise);
-
-            void afficherMenuDevise() {
-                var texte = "*********************\n";
-                texte = texte + "$ ou Dollars (US)\n";
-                texte = texte + "Roubles (Russie)\n";
-                texte = texte + "Yuans (Chine)\n";
-                texte = texte + "Livres (Royaume-Uni)\n";
-                Console.WriteLine(texte);
+            switch(operation) {
+                case 1 : 
+                    Console.WriteLine(nombreAleatoire1 + " + " + nombreAleatoire2 + " = ");
+                    bonneReponse = nombreAleatoire1 + nombreAleatoire2;
+                break;
+                case 2 : 
+                    Console.WriteLine(nombreAleatoire1 + " - " + nombreAleatoire2 + " = ");
+                    bonneReponse = nombreAleatoire1 - nombreAleatoire2;
+                break;
+                case 3 : 
+                    Console.WriteLine(nombreAleatoire1 + " * " + nombreAleatoire2 + " = ");
+                    bonneReponse = nombreAleatoire1 * nombreAleatoire2;
+                break;
+                case 4 : 
+                    Console.WriteLine(nombreAleatoire1 + " / " + nombreAleatoire2 + " = ");
+                    bonneReponse = nombreAleatoire1 / nombreAleatoire2;
+                break;
+                default : Console.WriteLine("Erreur");
+                break;
             }
+
+            do {
+                Console.WriteLine("Quel est votre reponse ?");
+                reponse = int.Parse(Console.ReadLine());
+                if(reponse == bonneReponse) {
+                    Console.WriteLine("Bonne réponse, félicitations");
+                } else {
+                    Console.WriteLine("Mauvaise réponse, recommencer !");
+                }
+            } while (reponse != bonneReponse);
         }
     }
 }
