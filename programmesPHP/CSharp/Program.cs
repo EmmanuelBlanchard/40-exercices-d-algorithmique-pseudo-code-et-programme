@@ -6,8 +6,10 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Quel est le rayon du cercle ? : ");
-            int nombreRayonCercleSaisi = int.Parse(Console.ReadLine());
+            Console.WriteLine("Quelle est la longueur du rectangle ? : ");
+            int nombreLongueurRectangleSaisi = int.Parse(Console.ReadLine());
+            Console.WriteLine("Quelle est la largeur du rectangle ? : ");
+            int nombreLargeurRectangleSaisi = int.Parse(Console.ReadLine());
             
             afficherMenu();
 
@@ -19,9 +21,9 @@ namespace CSharp
             } while (choixMenu != 1 && choixMenu != 2);
 
             if(choixMenu == 1) {
-                Console.WriteLine("Le périmètre d'un cercle de rayon " + nombreRayonCercleSaisi + " est de : " + retournePerimetreCercle(nombreRayonCercleSaisi));
+                Console.WriteLine("Le périmètre d'un rectangle de longueur " + nombreLongueurRectangleSaisi + " et de largeur " + nombreLargeurRectangleSaisi + " est de : " + retournePerimetreRectangle(nombreLongueurRectangleSaisi,nombreLargeurRectangleSaisi));
             } else if(choixMenu == 2) {
-                Console.WriteLine("L'aire d'un cercle de rayon " + nombreRayonCercleSaisi + " est de : " + retourneAireCercle(nombreRayonCercleSaisi));
+                Console.WriteLine("L'aire d'un rectangle de longueur " + nombreLongueurRectangleSaisi + " et de largeur " + nombreLargeurRectangleSaisi + " est de : " + retourneAireRectangle(nombreLongueurRectangleSaisi,nombreLargeurRectangleSaisi));
             }
 
             void afficherMenu() {
@@ -33,12 +35,12 @@ namespace CSharp
                 Console.WriteLine(message);
             }
 
-            double retournePerimetreCercle(int rayon) {
-                return 2 * rayon * Math.PI;
+            double retournePerimetreRectangle(int longueur, int largeur) {
+                return 2 * longueur + 2 * largeur;
             }
 
-            double retourneAireCercle(int rayon) {
-                return rayon * rayon * Math.PI;
+            double retourneAireRectangle(int longueur, int largeur) {
+                return longueur * largeur;
             }
         }
     }
