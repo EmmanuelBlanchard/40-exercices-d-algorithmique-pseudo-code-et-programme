@@ -6,15 +6,30 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Combien de marches ? ");
-            int nombreDeMarches = int.Parse(Console.ReadLine());
+            Console.WriteLine("Quel est le nombre de la taille du carre voulez vous ? ");
+            int nombreDeLaTailleDuCarre = int.Parse(Console.ReadLine());
+            
+            string grandeLigne = "";
 
-            for(int i = 1; i <= nombreDeMarches ; i = i + 1) {
-                String ligne = "_/";
-                for(int j = nombreDeMarches - 1; j >= i ; j = j - 1) {
-                    ligne = "  " + ligne;
+            for(int i = 1; i <= nombreDeLaTailleDuCarre ; i = i + 1) {
+                grandeLigne = grandeLigne + "**";
+            }
+
+            string petiteLigne = "";
+            for(int j = 1 ; j <= nombreDeLaTailleDuCarre ; j = j + 1) {
+                if(j == 1 || j == nombreDeLaTailleDuCarre) {
+                    petiteLigne = petiteLigne + "**";
+                } else {
+                    petiteLigne = petiteLigne + "  ";
                 }
-                Console.WriteLine(ligne);
+            }
+
+            for(int k = 1 ; k <= nombreDeLaTailleDuCarre ; k = k + 1) {
+                if(k == 1 || k == nombreDeLaTailleDuCarre) {
+                    Console.WriteLine(grandeLigne);
+                } else {
+                    Console.WriteLine(petiteLigne);
+                }
             }
         }
     }
