@@ -6,28 +6,39 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Quelle est la factorielle voulue ? : ");
-            int nombreFactorielleSaisi = int.Parse(Console.ReadLine());
+            Console.WriteLine("Quel est le rayon du cercle ? : ");
+            int nombreRayonCercleSaisi = int.Parse(Console.ReadLine());
+            
+            afficherMenu();
 
-            Console.WriteLine("------------------");
-            Console.WriteLine("Version boucle : " + "\n" + "La factorielle de " + nombreFactorielleSaisi + " = " + factorielleVersionBoucle(nombreFactorielleSaisi));
-            Console.WriteLine("------------------");
-            Console.WriteLine("Version récursive : " + "\n" + "La factorielle de " + nombreFactorielleSaisi + " = " + factorielleVersionRecursive(nombreFactorielleSaisi));
+            int choixMenu = 0;
 
-            int factorielleVersionBoucle(int nombreFactorielleSaisi) {
-                int resultatFactorielle = 1;
-                for(var i = 1; i <= nombreFactorielleSaisi ; i = i + 1) {
-                    resultatFactorielle = resultatFactorielle * i;
-                }
-                return resultatFactorielle;
+            do {
+                Console.WriteLine("Quel est votre choix ? : ");
+                choixMenu = int.Parse(Console.ReadLine());
+            } while (choixMenu != 1 && choixMenu != 2);
+
+            if(choixMenu == 1) {
+                Console.WriteLine("Le périmètre d'un cercle de rayon " + nombreRayonCercleSaisi + " est de : " + retournePerimetreCercle(nombreRayonCercleSaisi));
+            } else if(choixMenu == 2) {
+                Console.WriteLine("L'aire d'un cercle de rayon " + nombreRayonCercleSaisi + " est de : " + retourneAireCercle(nombreRayonCercleSaisi));
             }
 
-            int factorielleVersionRecursive(int nombreFactorielleSaisi) {
-                if(nombreFactorielleSaisi <= 1) {
-                    return 1;
-                } else {
-                    return nombreFactorielleSaisi * factorielleVersionRecursive(nombreFactorielleSaisi - 1);
-                }
+            void afficherMenu() {
+                var message = "-------------------- \n";
+                message = message + "----------Menu----------\n";
+                message = message + "1 : Périmètre \n";
+                message = message + "2 : Aire \n";
+                message = message + "--------------------";
+                Console.WriteLine(message);
+            }
+
+            double retournePerimetreCercle(int rayon) {
+                return 2 * rayon * Math.PI;
+            }
+
+            double retourneAireCercle(int rayon) {
+                return rayon * rayon * Math.PI;
             }
         }
     }
