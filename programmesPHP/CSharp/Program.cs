@@ -6,29 +6,27 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Quel est le nombre de la taille du carre voulez vous ? ");
-            int nombreDeLaTailleDuCarre = int.Parse(Console.ReadLine());
-            
-            string grandeLigne = "";
+            Console.WriteLine("Quelle est la factorielle voulue ? : ");
+            int nombreFactorielleSaisi = int.Parse(Console.ReadLine());
 
-            for(int i = 1; i <= nombreDeLaTailleDuCarre ; i = i + 1) {
-                grandeLigne = grandeLigne + "**";
-            }
+            Console.WriteLine("------------------");
+            Console.WriteLine("Version boucle : " + "\n" + "La factorielle de " + nombreFactorielleSaisi + " = " + factorielleVersionBoucle(nombreFactorielleSaisi));
+            Console.WriteLine("------------------");
+            Console.WriteLine("Version récursive : " + "\n" + "La factorielle de " + nombreFactorielleSaisi + " = " + factorielleVersionRecursive(nombreFactorielleSaisi));
 
-            string petiteLigne = "";
-            for(int j = 1 ; j <= nombreDeLaTailleDuCarre ; j = j + 1) {
-                if(j == 1 || j == nombreDeLaTailleDuCarre) {
-                    petiteLigne = petiteLigne + "**";
-                } else {
-                    petiteLigne = petiteLigne + "  ";
+            int factorielleVersionBoucle(int nombreFactorielleSaisi) {
+                int resultatFactorielle = 1;
+                for(var i = 1; i <= nombreFactorielleSaisi ; i = i + 1) {
+                    resultatFactorielle = resultatFactorielle * i;
                 }
+                return resultatFactorielle;
             }
 
-            for(int k = 1 ; k <= nombreDeLaTailleDuCarre ; k = k + 1) {
-                if(k == 1 || k == nombreDeLaTailleDuCarre) {
-                    Console.WriteLine(grandeLigne);
+            int factorielleVersionRecursive(int nombreFactorielleSaisi) {
+                if(nombreFactorielleSaisi <= 1) {
+                    return 1;
                 } else {
-                    Console.WriteLine(petiteLigne);
+                    return nombreFactorielleSaisi * factorielleVersionRecursive(nombreFactorielleSaisi - 1);
                 }
             }
         }
