@@ -7,12 +7,23 @@ namespace CSharp
         static void Main(string[] args)
         {
             String[,] listeUtilisateurs = {
-                {"Tya","test1"},
-                {"Milo","test2"},
-                {"Lili","test3"}
+                {"Tya","test1","admin"},
+                {"Milo","test2","user"},
+                {"Lili","test3","user"}
             };
 
-            Boolean  connecte = false;
+            String estConnecte(String[,] utilisateurs,String choixLogin,String choixMotDePasse) {
+                for(var i = 0 ; i < utilisateurs.Length/3; i++) {
+                    if(choixLogin == utilisateurs[i,0] && choixMotDePasse == utilisateurs[i,1]) {
+                        return utilisateurs[i,2];
+                    }
+                }
+                return "";
+            }
+
+            String role = "";
+            int nombreEssai = 1;
+            const int NOMBREESSAISTOTAL = 3;
             do {
                 Console.WriteLine("Saisir votre login ? : ");
                 String choixLogin = Console.ReadLine();
@@ -20,21 +31,18 @@ namespace CSharp
                 Console.WriteLine("Saisir votre mot de passe ? : ");
                 String choixMotDePasse = Console.ReadLine();
 
-                connecte = estConnecte(listeUtilisateurs,choixLogin,choixMotDePasse);
-                if(!connecte) {
-                    Console.WriteLine("Combinaison login / mot de passe incorrecte, recommencez !");
+                role = estConnecte(listeUtilisateurs,choixLogin,choixMotDePasse);
+                if(role == "") {
+                    Console.WriteLine("Combinaison login / mot de passe incorrecte, encore " + (NOMBREESSAISTOTAL - nombreEssai) + " essais !");
+                    nombreEssai++;
                 }
-            } while (!connecte);
+            } while (role == "" && nombreEssai <= NOMBREESSAISTOTAL);
 
-            Console.WriteLine("Vous êtes connecté !");
-
-            Boolean estConnecte(String[,] utilisateurs,String choixLogin,String choixMotDePasse) {
-                for(var i = 0 ; i < utilisateurs.Length/2; i++) {
-                    if(choixLogin == listeUtilisateurs[i, 0] && choixMotDePasse == listeUtilisateurs[i, 1]) {
-                        return true;
-                    }
-                }
-                return false;
+            if(nombreEssai > NOMBREESSAISTOTAL) {
+                Console.WriteLine("Vous avez essayé trop de fois ! \n");
+                Console.WriteLine("Fin du programme !");
+            } else {
+                Console.WriteLine("Vous êtes connecté ! et vos accès sont : " + role);
             }
         }
     }
