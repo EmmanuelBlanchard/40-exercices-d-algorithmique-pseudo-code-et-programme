@@ -6,55 +6,51 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            Random rand = new Random();
-            int nombreAleatoire = rand.Next(26) + 1;
-            char lettre = recuperationLettre(nombreAleatoire);
+            Console.WriteLine("Saisir le message : ");
+            String message = Console.ReadLine();
 
-            String questionMotASaisir = "-";
+            Console.WriteLine(encodeMessage(message));
 
-            char recuperationLettre(int nombreAleatoire) {
-                switch(nombreAleatoire) {
-                    case 1 : return 'a';
-                    case 2 : return 'b';
-                    case 3 : return 'c';
-                    case 4 : return 'd';
-                    case 5 : return 'e';
-                    case 6 : return 'f';
-                    case 7 : return 'g';
-                    case 8 : return 'h';
-                    case 9 : return 'i';
-                    case 10 : return 'j';
-                    case 11 : return 'k';
-                    case 12 : return 'l';
-                    case 13 : return 'm';
-                    case 14 : return 'n';
-                    case 15 : return 'o';
-                    case 16 : return 'p';
-                    case 17 : return 'q';
-                    case 18 : return 'r';
-                    case 19 : return 's';
-                    case 20 : return 't';
-                    case 21 : return 'u';
-                    case 22 : return 'v';
-                    case 23 : return 'w';
-                    case 24 : return 'x';
-                    case 25 : return 'y';
-                    case 26 : return 'z';
-                    default : Console.WriteLine("La lettre n'existe pas");
-                            return '-';
+            String encodeMessage(String message) {
+                var messageEncode = "";
+                for(var i = 0 ; i < message.Length ; i++) {
+                    messageEncode = messageEncode + lettreAMorse(message[i]) + " ";
                 }
+                return messageEncode;
             }
 
-            do {
-                Console.WriteLine("Saisir un mot commencant par un : \"" + lettre + "\" : ");
-                questionMotASaisir = Console.ReadLine();
-
-                if(char.ToLower(questionMotASaisir[0]) != lettre) {
-                    Console.WriteLine("le mot saisi ne commence pas par un \"" + lettre + "\" , recommencez ! ");
+            String lettreAMorse(char lettre) {
+                switch(char.ToLower(lettre)) {
+                    case 'a' : return ".-";
+                    case 'b' : return "-...";
+                    case 'c' : return "-.-.";
+                    case 'd' : return "-..";
+                    case 'e' : return ".";
+                    case 'f' : return "..-.";
+                    case 'g' : return "--.";
+                    case 'h' : return "....";
+                    case 'i' : return "..";
+                    case 'j' : return ".---";
+                    case 'k' : return "-.-";
+                    case 'l' : return ".-..";
+                    case 'm' : return "--";
+                    case 'n' : return "-.";
+                    case 'o' : return "---";
+                    case 'p' : return ".--.";
+                    case 'q' : return "--.-";
+                    case 'r' : return ".-.";
+                    case 's' : return "...";
+                    case 't' : return "-";
+                    case 'u' : return "..-";
+                    case 'v' : return "...-";
+                    case 'w' : return ".--";
+                    case 'x' : return "-..-";
+                    case 'y' : return "-.--";
+                    case 'z' : return "--..";
+                    case ' ' : return " ";
+                    default : return "";
                 }
-
-            } while (char.ToLower(questionMotASaisir[0]) != lettre);
-            Console.WriteLine("Parfait !");
+            }
         }
     }
 }
