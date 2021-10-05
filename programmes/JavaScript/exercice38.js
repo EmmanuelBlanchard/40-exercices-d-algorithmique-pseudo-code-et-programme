@@ -3,7 +3,7 @@ var readline = require("readline-sync");
 
 var nombreAleatoire = Math.floor(Math.random() * 26 + 1);
 
-function recuperaterLettre(nombreAleatoire) {
+function recupererLettre(nombreAleatoire) {
     switch(nombreAleatoire) {
         case 1 : return 'a';
         case 2 : return 'b';
@@ -37,7 +37,7 @@ function recuperaterLettre(nombreAleatoire) {
 }
 
 do {
-    var lettre = recuperaterLettre(nombreAleatoire);
+    var lettre = recupererLettre(nombreAleatoire);
     
     var questionMotASaisir = readline.question("Saisir un mot commencant par un : \"" + lettre + "\" : ");
 
