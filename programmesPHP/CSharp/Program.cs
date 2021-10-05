@@ -6,44 +6,55 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            String[,] listeUtilisateurs = {
-                {"Tya","test1","admin"},
-                {"Milo","test2","user"},
-                {"Lili","test3","user"}
-            };
+            Random rand = new Random();
+            int nombreAleatoire = rand.Next(26) + 1;
+            char lettre = recuperationLettre(nombreAleatoire);
 
-            String estConnecte(String[,] utilisateurs,String choixLogin,String choixMotDePasse) {
-                for(var i = 0 ; i < utilisateurs.Length/3; i++) {
-                    if(choixLogin == utilisateurs[i,0] && choixMotDePasse == utilisateurs[i,1]) {
-                        return utilisateurs[i,2];
-                    }
+            String questionMotASaisir = "-";
+
+            char recuperationLettre(int nombreAleatoire) {
+                switch(nombreAleatoire) {
+                    case 1 : return 'a';
+                    case 2 : return 'b';
+                    case 3 : return 'c';
+                    case 4 : return 'd';
+                    case 5 : return 'e';
+                    case 6 : return 'f';
+                    case 7 : return 'g';
+                    case 8 : return 'h';
+                    case 9 : return 'i';
+                    case 10 : return 'j';
+                    case 11 : return 'k';
+                    case 12 : return 'l';
+                    case 13 : return 'm';
+                    case 14 : return 'n';
+                    case 15 : return 'o';
+                    case 16 : return 'p';
+                    case 17 : return 'q';
+                    case 18 : return 'r';
+                    case 19 : return 's';
+                    case 20 : return 't';
+                    case 21 : return 'u';
+                    case 22 : return 'v';
+                    case 23 : return 'w';
+                    case 24 : return 'x';
+                    case 25 : return 'y';
+                    case 26 : return 'z';
+                    default : Console.WriteLine("La lettre n'existe pas");
+                            return '-';
                 }
-                return "";
             }
 
-            String role = "";
-            int nombreEssai = 1;
-            const int NOMBREESSAISTOTAL = 3;
             do {
-                Console.WriteLine("Saisir votre login ? : ");
-                String choixLogin = Console.ReadLine();
+                Console.WriteLine("Saisir un mot commencant par un : \"" + lettre + "\" : ");
+                questionMotASaisir = Console.ReadLine();
 
-                Console.WriteLine("Saisir votre mot de passe ? : ");
-                String choixMotDePasse = Console.ReadLine();
-
-                role = estConnecte(listeUtilisateurs,choixLogin,choixMotDePasse);
-                if(role == "") {
-                    Console.WriteLine("Combinaison login / mot de passe incorrecte, encore " + (NOMBREESSAISTOTAL - nombreEssai) + " essais !");
-                    nombreEssai++;
+                if(char.ToLower(questionMotASaisir[0]) != lettre) {
+                    Console.WriteLine("le mot saisi ne commence pas par un \"" + lettre + "\" , recommencez ! ");
                 }
-            } while (role == "" && nombreEssai <= NOMBREESSAISTOTAL);
 
-            if(nombreEssai > NOMBREESSAISTOTAL) {
-                Console.WriteLine("Vous avez essayé trop de fois ! \n");
-                Console.WriteLine("Fin du programme !");
-            } else {
-                Console.WriteLine("Vous êtes connecté ! et vos accès sont : " + role);
-            }
+            } while (char.ToLower(questionMotASaisir[0]) != lettre);
+            Console.WriteLine("Parfait !");
         }
     }
 }
